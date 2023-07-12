@@ -1,17 +1,18 @@
 {
-  "name": "google-translate",
+  "name": "@mgcodeur/super-translator",
   "version": "1.0.0",
   "type": "module",
   "description": "",
-  "main": "main.js",
+  "main": "./dist/super-translator.cjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "vite build"
   },
   "author": "",
   "license": "MIT",
   "dependencies": {
     "puppeteer": "^20.8.1",
     "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2"
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "vite": "^4.4.3"
   }
 }
