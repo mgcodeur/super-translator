@@ -1,0 +1,16 @@
+# dependencies
+node_modules
+
+# IDE
+.idea
+.vscode
+
+# generated files
+user_data
+
+# lock files
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
+
+code-review.csv
