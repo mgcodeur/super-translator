@@ -39,11 +39,16 @@ console.log(translated)
 ```
 
 ### Note: if translateTo is not specified, it will be "en"
-### Don't forget to add type="module" in your package.json file
+#### Don't forget to add type="module" in your package.json file
 
 ```json
 {
   "type": "module"
   ...
 }
+```
+
+**You can run this with command:**
+```bash
+node your-file.js
 ```
