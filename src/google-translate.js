@@ -1,52 +1,41 @@
-import puppeteer from 'puppeteer-extra';
-import StealthPlugin from 'puppeteer-extra-plugin-stealth';
+import https from 'https';
 
-function getSourceLang(option) {
-    return option.translateFrom || 'auto';
+class GoogleTranslate {
+    static async translate({ from = 'auto', to = 'en', text }) {
+        const json = await GoogleTranslate.requestTranslation(from, to, text);
+        return GoogleTranslate.getSentenceFromJSON(json);
+    }
+
+    static async requestTranslation(from, to, text) {
+        if(text.length > 5000) {
+            throw new Error('Maximum number of characters exceeded: 5000');
+        }
+
+        const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=${encodeURI(from)}&tl=${encodeURI(to)}&dt=t&q=${encodeURI(text)}`;
+
+        const response = await new Promise((resolve, reject) => {
+            https.get(url, res => {
+                let data = '';
+                res.on('data', chunk => data += chunk);
+                res.on('end', () => resolve(data));
+                res.on('error', err => reject(err));
+            });
+        });
+
+        return JSON.parse(response);
+    }
+
+    static getSentenceFromJSON(json) {
+        if(!Array.isArray(json) || !Array.isArray(json[0]) || !Array.isArray(json[0][0])) {
+            throw new Error('Invalid JSON response');
+        }
+
+        return json[0][0][0];
+    }
 }
 
-function getTargetLang(option) {
-    return option.translateTo || 'en';
+const translate = ({ from = 'auto', to = 'en', text }) => {
+    return GoogleTranslate.translate({ from, to, text });
 }
-
-/**
- * 
- * @param {string} message
- * @param {object} options 
- * @param {string} options.translateFrom
- * @param {string} options.translateTo
- * @returns {Promise<string>}
- */
-const translate = async (message, options = {}) => {
-    //FIXME: Remove this line when any bug appear
-    console.warn = () => {};
-
-    const browser = await puppeteer.use(StealthPlugin()).launch({
-        headless: true,
-        userDataDir: './user_data'
-    });
-
-    const page = await browser.newPage();
-
-    await page.goto(`https://translate.google.com/?sl=${getSourceLang(options)}&tl=${getTargetLang(options)}&op=translate`);
-
-    //FIXME: INPUT BOX
-    const sourceInput = await page.$('textarea[aria-label="Source text"]');
-    
-    await sourceInput.type(message);
-
-    await page.waitForSelector(`textarea[lang="${getTargetLang(options)}"]`);
-
-    //FIXME: OUTPUT BOX
-    const targetInput = await page.$(`textarea[lang="${getTargetLang(options)}"]`);
-    
-    const translationResult = await page.evaluate(targetInput => {
-        return targetInput.value;
-    }, targetInput);
-
-    await browser.close();
-    
-    return translationResult;
-};
 
 export default translate;

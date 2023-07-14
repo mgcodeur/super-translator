@@ -8,6 +8,14 @@ export default defineConfig({
             name: 'super-translator',
             formats: ['es', 'umd', 'cjs']
         },
-        minify: true
-    }
+        minify: true,
+        rollupOptions: {
+            external: ['https'],
+            output: {
+                globals: {
+                    'https': 'https'
+                }
+            }
+        }
+    },
 })
