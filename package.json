@@ -1,6 +1,6 @@
 {
   "name": "@mgcodeur/super-translator",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "type": "module",
   "description": "Translate text from any language to any language for free using (Google Translate, DeepL, Yandex Translate, Bing Translator)",
   "main": "./dist/super-translator.cjs",
