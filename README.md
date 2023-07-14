@@ -13,32 +13,34 @@ import translate from '@mgcodeur/super-translator';
 ```js
 import translate from '@mgcodeur/super-translator';
 
-const translated = await translate('Hello world', {
-    translateFrom: 'en',
-    translateTo: 'es'
+const result = await GoogleTranslate.translate({
+    from: 'en',
+    to: 'es',
+    text: 'Hello World!'
 });
 
-console.log(translated)
+console.log(result);
 // output: Hola mundo
 ```
 
 ## Auto detect language
-#### Nb: translateFrom is not required, if not specified, it will be automatically detected
+#### Nb: "from" is not required, if not specified, it will be automatically detected
 
 **Example:**
 
 ```js
 import translate from '@mgcodeur/super-translator';
 
-const translated = await translate('Hello world', {
-    translateTo: 'ja'
+const result = await GoogleTranslate.translate({
+    to: 'ja',
+    text: 'Hello World!'
 });
 
-console.log(translated)
+console.log(result);
 // output: こんにちは世界
 ```
 
-### Note: if translateTo is not specified, it will be "en"
+### Note: if "to" is not specified, it will be "en"
 #### Don't forget to add type="module" in your package.json file
 
 ```json

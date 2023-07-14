@@ -2,7 +2,7 @@
   "name": "@mgcodeur/super-translator",
   "version": "1.0.4",
   "type": "module",
-  "description": "Translate text from any language to any language for free using (Google Translate, DeepL, Yandex Translate, Bing Translator) made with puppeteer",
+  "description": "Translate text from any language to any language for free using (Google Translate, DeepL, Yandex Translate, Bing Translator)",
   "main": "./dist/super-translator.cjs",
   "scripts": {
     "build": "vite build"
@@ -13,9 +13,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "puppeteer": "^20.8.1",
-    "puppeteer-extra": "^3.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "https": "^1.0.0",
     "vite": "^4.4.3"
   },
   "keywords": [
@@ -25,10 +23,7 @@
     "google translate",
     "deepl",
     "yandex translate",
-    "bing translator",
-    "puppeteer",
-    "puppeteer-extra",
-    "puppeteer-extra-plugin-stealth"
+    "bing translator"
   ],
   "repository": {
     "type": "git",
