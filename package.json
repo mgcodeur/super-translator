@@ -1,6 +1,6 @@
 {
   "name": "@mgcodeur/super-translator",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "description": "Translate text from any language to any language for free using (Google Translate, DeepL, Yandex Translate, Bing Translator)",
   "main": "./dist/super-translator.cjs",
@@ -14,8 +14,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "https": "^1.0.0",
-    "vite": "^4.4.3"
+    "https": "^1.0.0"
   },
   "keywords": [
     "translate",
@@ -31,6 +30,7 @@
     "url": "https://github.com/mgcodeur/super-translator"
   },
   "devDependencies": {
-    "auto-changelog": "^2.4.0"
+    "auto-changelog": "^2.4.0",
+    "vite": "^4.4.4"
   }
 }
