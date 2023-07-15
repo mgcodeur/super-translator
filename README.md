@@ -1,7 +1,7 @@
 ## Installation
 1. Install the package
 ```bash
-npm i @mgcodeur/super-translator
+npm i @mgcodeur/super-translator@latest
 ```
 
 1. Import the module
@@ -13,7 +13,7 @@ import translate from '@mgcodeur/super-translator';
 ```js
 import translate from '@mgcodeur/super-translator';
 
-const result = await GoogleTranslate.translate({
+const result = await translate({
     from: 'en',
     to: 'es',
     text: 'Hello World!'
@@ -31,7 +31,7 @@ console.log(result);
 ```js
 import translate from '@mgcodeur/super-translator';
 
-const result = await GoogleTranslate.translate({
+const result = await translate({
     to: 'ja',
     text: 'Hello World!'
 });

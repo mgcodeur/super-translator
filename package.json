@@ -1,11 +1,12 @@
 {
   "name": "@mgcodeur/super-translator",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "type": "module",
   "description": "Translate text from any language to any language for free using (Google Translate, DeepL, Yandex Translate, Bing Translator)",
   "main": "./dist/super-translator.cjs",
   "scripts": {
-    "build": "vite build"
+    "build": "vite build",
+    "version": "auto-changelog -p"
   },
   "author": {
     "name": "Jimmy Raphaël (Iharena)",
@@ -28,5 +29,8 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/mgcodeur/super-translator"
+  },
+  "devDependencies": {
+    "auto-changelog": "^2.4.0"
   }
 }
