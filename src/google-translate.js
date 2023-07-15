@@ -26,11 +26,17 @@ class GoogleTranslate {
     }
 
     static getSentenceFromJSON(json) {
-        if(!Array.isArray(json) || !Array.isArray(json[0]) || !Array.isArray(json[0][0])) {
-            throw new Error('Invalid JSON response');
+        let sentences = '';
+
+        if(!json || !json[0]) {
+            throw new Error('Google detected unusual traffic from your computer network, try again later (2 - 48 hours)');
         }
 
-        return json[0][0][0];
+        for(const s of json[0]) {
+            sentences += s[0] || '';
+        }
+
+        return sentences;
     }
 }
 
